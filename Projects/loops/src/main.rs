@@ -37,4 +37,14 @@ fn main() {
         index = index + 1;
     }
     
+    for element in a.iter() {//Safer than the former
+        println!("The value is: {}", element);
+    }
+
+    //Reverse index
+    for number in (1..4).rev() {
+        println!("{}!", number);
+    }
+    println!("LIFTOFF!!!");
+    
 }
