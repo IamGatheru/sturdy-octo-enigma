@@ -34,4 +34,40 @@ fn main() {
     // - a length - how much memory in bytes, the contents of the String are currently using
     // - a capacity - the total amount of memory the String has received from the operating 
     //system. 
+
+    // Stack-Only data: copy
+
+    // Types such as integers have a known size at compile time and so are entirely stored
+    // on the stack, so copies of the actual values are actually easy to make.
+
+
+    //Ownership and Functions
+    let ss = String::from("Take care");
+
+    take_ownership(ss);
+    
+    let x = 5;  // x comes into scope
+    make_copy(x);
+
+    //Returning values by functions can be used to transfer ownership.
+    //Returning ownership of parameters.
+    let sy = String::from("hello");
+
+    let (sy1, len) = calculate_length(sy);
+
+    println!("The length of '{}' is {}.", sy1, len)
+}
+
+fn take_ownership(some_string: String) {
+    println!("{}", some_string);
+} //'drop' called, memory freed
+
+fn make_copy(some_integer: i32) {
+    println!("{}", some_integer);
+}
+
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len(); //len() returns the length of a string
+
+    (s, length)
 }
