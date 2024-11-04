@@ -65,9 +65,32 @@ fn take_ownership(some_string: String) {
 fn make_copy(some_integer: i32) {
     println!("{}", some_integer);
 }
-
+//The possibility of returning multiple values
 fn calculate_length(s: String) -> (String, usize) {
     let length = s.len(); //len() returns the length of a string
 
     (s, length)
+}//In this block, the issue is that we have to return the String to the 
+// calling functions so that we can use the String after the call to 
+//calculate_length.
+
+
+/*
+Here is how to define and use a calculate_length function that has a reference to an object
+as a parameter instead of taking ownership of the value.
+*/
+
+/*
+fn main() {
+    let s1 = String::from("Hello");
+
+    let len = calculate_length(&s1);
+
+    println!("The length of '{}' is {}.", s1, len);
+
+
+} 
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
+*/
